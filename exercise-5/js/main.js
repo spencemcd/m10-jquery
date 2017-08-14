@@ -16,9 +16,22 @@ $(document).ready(function() {
     var selectedColor = "red";
 
     // Select the table which will hold out board by its id
-
+	var grid = $('#board');
     // Make n table rows where n is the height of the grid
     //
+    	for (var n = 0; n < gridHeight; n++){
+		var row = $('<tr>');
+		$(grid).append(row);
+
+		for(var m = 0; m < gridWidth; m++){
+			var col = $('<td>');
+			$(row).append(col);
+			$(col).click(function(){
+				$(this).css('background-color', selectedColor);
+			});
+		}
+	}
+
         //Append each row to the grid
 
         // In each table row, make m table data elements, where
@@ -29,17 +42,26 @@ $(document).ready(function() {
             // Once the table data element has been appended to the row,
             // assign a click event that will change this element's
             // background color to the value of selectedColor
-
+	
 
     // Select the table which will hold our color palette by
     // its id
-
+ 	var palette = $('#palette');
 
     // For each color in colors, make a table row with one table data
     // element in it. Set the table data's background color to its
     // corresponding color. The table data elements should have a
     // class of colorSwatch
-
+	for(var i = 0; i < colors.length; i++){
+		var ro = $('<tr>');
+		var cell = $('<td class="colorSwatch">');
+		ro.append(cell);
+		palette.append(ro);
+		$(ro).css('background-color', colors[i]);
+		$(ro).click(function(){
+			selectedColor = $(this).css('background-color');
+		});
+	}
         // Assign a click event to the table data element so that when it is
         // clicked, selectedColor will be set to that element's corresponding
         // color.
