@@ -6,7 +6,15 @@ $(function() {
       // height of 300
       // width of 500
       // opacity of .5
-
-  // When the transition finishes, fade out your paragraphs and your circle.
+// When the transition finishes, fade out your paragraphs and your circle.
+	$('#my-div').animate({
+		height: '300',
+		width: '500',
+		opacity: '.5'
+	}, 1500, function() {
+		$('p').fadeOut(500);
+		$('circle').fadeOut(500);
+	});
+  
 
 });
